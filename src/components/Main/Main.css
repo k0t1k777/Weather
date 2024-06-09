@@ -1,0 +1,46 @@
+.main {
+  margin: 0 auto;
+  padding: 40px;
+  box-sizing: border-box;
+  /* display: flex; */
+  min-width: 320px;
+  max-width: 320px;
+  min-height: 812px;
+  border-radius: 36px;
+  border: 1px solid red;
+}
+
+.main__container-city {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main__city {
+  margin: 0;
+  font-family: 'PingFang SC';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.main__time {
+  margin: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 16px;
+}
+
+.main__image {
+  width: 160px;
+  height: 160px;
+  padding-top: 66px;
+}
+
+.main__weather {
+
+}
+
+.main__degress {
+  
+}

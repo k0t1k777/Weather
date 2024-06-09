@@ -1,11 +1,22 @@
 import './App.css';
-import Header from './../Header/Header';
+import Main from '../Main/Main';
+// import * as API from './../servises/requests'
+// import { useState } from 'react';
+// import { useEffect } from 'react';
 
 export default function App() {
-  return (
+// const [weather, setWeather] = useState([])
+// console.log('weather: ', weather);
+
+// useEffect(() => {
+// API.getWeather()
+// .
+// }, [])
+
+
+return (
     <>
-      <div>APP</div>
-      <Header />
+      <Main />
     </>
   );
 }
