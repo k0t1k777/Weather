@@ -5,8 +5,6 @@ import ContainerDays from './ContainerDays/ContainerDays';
 export default function Main({ weather, forecast }) {
   console.log('weather: ', forecast);
 
-  console.log('weather: ', forecast.forecastday?.hour);
-
   return (
     <div className='main'>
       <div className='main__container-city'>
@@ -24,7 +22,7 @@ export default function Main({ weather, forecast }) {
         <p className='main__degress'>{weather.current?.temp_c}°</p>
       </div>
       <Chart />
-      <ContainerDays />
+      <ContainerDays forecast={forecast}/>
     </div>
   );
 }
