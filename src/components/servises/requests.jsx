@@ -1,4 +1,4 @@
-const BASE_URL = 'http://api.weatherapi.com/v1';
+const BASE_URL = 'https://api.weatherapi.com/v1';
 const API_KEY = 'cfdb47b0be2e469d83d111640240906';
 
 const getResponseData = (res = Response) => {
