@@ -1,5 +1,6 @@
 import './Main.css';
 import MainPicture from './../../assets/Image1.png';
+import Chart from '../Chart/Chart';
 
 export default function Main() {
   return (
@@ -14,6 +15,7 @@ export default function Main() {
         <p className="main__weather">thunderstorm</p>
         <p className="main__degress">24</p>
       </div>
+      <Chart />
     </div>
   );
 }
