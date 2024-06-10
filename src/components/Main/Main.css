@@ -6,11 +6,9 @@
   max-width: 375px;
   min-height: 800px;
   border-radius: 36px;
-  border: 1px solid red;
 }
 
 .main__container-city {
-  border: 1px solid black;
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
