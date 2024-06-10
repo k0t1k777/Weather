@@ -11,17 +11,6 @@ const location = 'Ulyanovsk'
 const lang = 'Ru'
 const days = 1
 
-// useEffect(() => {
-// Api.getWeather(location, lang)
-// .then((data) => {
-//   setWeather(data)
-// })
-// .catch((error) => {
-//   console.error(error)
-// })
-// }, [location, lang])
-
-
 useEffect(() => {
   Api.getForecast(location, days, lang)
   .then((data) => {
