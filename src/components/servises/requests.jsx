@@ -8,15 +8,6 @@ const getResponseData = (res = Response) => {
   return res.json();
 };
 
-// export const getWeather = (location, lang) => {
-//   return fetch(`${BASE_URL}/current.json?key=${API_KEY}&q=${location}&lang=${lang}`, {
-//     method: 'GET',
-//     headers: {
-//       'Authorization': `Bearer ${API_KEY}`
-//     }
-//   }).then(getResponseData);
-// };
-
 export const getForecast = (location, days, lang) => {
   return fetch(`${BASE_URL}/forecast.json?key=${API_KEY}&q=${location}&days=${days}&lang=${lang}`, {
     method: 'GET',
