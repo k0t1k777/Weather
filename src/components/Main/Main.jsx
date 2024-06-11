@@ -36,6 +36,7 @@ const data = [
 
 export default function Main({ weather, forecast }) {
   const [hoursWeather, setHoursWeather] = useState([]);
+  const [hours, setHours] = useState(new Date().getHours());
 
   return (
     <div className='main'>
@@ -55,6 +56,8 @@ export default function Main({ weather, forecast }) {
       </div>
       <Chart data={data} />
       <ContainerDays
+        hours={hours}
+        setHours={setHours}
         forecast={forecast}
         hoursWeather={hoursWeather}
         setHoursWeather={setHoursWeather}

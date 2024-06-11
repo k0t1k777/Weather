@@ -7,9 +7,10 @@ import { useEffect } from 'react';
 export default function App() {
 const [weather, setWeather] = useState([])
 const [forecast, setForecast] = useState([])
-const location = 'Ulyanovsk'
+const location = 'Yevpatoriya'
 const lang = 'Ru'
 const days = 1
+
 
 useEffect(() => {
   Api.getForecast(location, days, lang)

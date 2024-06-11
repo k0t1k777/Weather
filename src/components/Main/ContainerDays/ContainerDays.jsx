@@ -1,10 +1,15 @@
 import './ContainerDays.css';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 
-export default function ContainerDays({ forecast, hoursWeather, setHoursWeather }) {
-  const [hours, setHours] = useState(new Date().getHours());
-
-  const saveHoursWeatherData = (forecast) => {
+export default function ContainerDays({
+  forecast,
+  hours,
+  setHours,
+  hoursWeather,
+  setHoursWeather,
+}) {
+  
+  const saveHoursWeatherData = useCallback((forecast) => {
     const updatedHoursWeather = [];
     forecast?.forEach((day) => {
       day.hour.forEach((hourlyForecast) => {
@@ -16,19 +21,18 @@ export default function ContainerDays({ forecast, hoursWeather, setHoursWeather 
       });
     });
     setHoursWeather(updatedHoursWeather);
-  };
+  }, []);
 
   console.log('hoursWeather: ', hoursWeather);
 
   useEffect(() => {
     saveHoursWeatherData(forecast.forecastday);
-  }, [forecast]);
+  }, [forecast, saveHoursWeatherData]);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setHours(new Date().getHours());
     }, 1000 * 60 * 60);
-
     return () => clearInterval(timer);
   }, []);
 
