@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from 'react';
 
 export default function Main({ weather, forecast }) {
   const [hoursWeather, setHoursWeather] = useState([]);
+  console.log('hoursWeather: ', hoursWeather);
   const [hours, setHours] = useState(new Date().getHours());
   const [chartData, setChartData] = useState([]);
 
