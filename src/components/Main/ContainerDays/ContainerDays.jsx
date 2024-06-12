@@ -30,17 +30,16 @@ export default function ContainerDays({ hours, setHours, hoursWeather }) {
         {hoursWeather.find((item) => item.time === hours - 1)?.temperature}°
       </div>
       <div className='days__containers days__containers_type_relative'>
-        <div className='days__shadow'>        </div>
-
-          <p className='days__item'>{hours}PM</p>
-          <img
-            src={hoursWeather.find((item) => item.time === hours)?.image}
-            alt='иконка картинки'
-            className='days__image'
-          />
-          <p className='days__degress'>
-            {hoursWeather.find((item) => item.time === hours)?.temperature}°
-          </p>
+        <div className='days__shadow'></div>
+        <p className='days__item'>{hours}PM</p>
+        <img
+          src={hoursWeather.find((item) => item.time === hours)?.image}
+          alt='иконка картинки'
+          className='days__image'
+        />
+        <p className='days__degress'>
+          {hoursWeather.find((item) => item.time === hours)?.temperature}°
+        </p>
       </div>
       <div className='days__containers'>
         <p className='days__item'>{hours + 1}PM</p>

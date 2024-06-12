@@ -38,11 +38,11 @@ export default function Main({ weather, forecast }) {
         );
 
         const newData = [
-          { temperature: prevTwoHours ? prevTwoHours.temperature : null },
-          { temperature: prevHour ? prevHour.temperature : null },
+          { temperature: prevTwoHours ? prevTwoHours.temperature : currentTemperature },
+          { temperature: prevHour ? prevHour.temperature : currentTemperature },
           { temperature: currentTemperature },
-          { temperature: nextHour ? nextHour.temperature : null },
-          { temperature: nextTwoHours ? nextTwoHours.temperature : null },
+          { temperature: nextHour ? nextHour.temperature : currentTemperature },
+          { temperature: nextTwoHours ? nextTwoHours.temperature : currentTemperature },
         ];
 
         setChartData(newData);
@@ -64,6 +64,7 @@ export default function Main({ weather, forecast }) {
       </div>
       <img
         className='main__image'
+        // src={current}
         src={weather.current?.condition.icon}
         alt='Иконка картинки'
       />
