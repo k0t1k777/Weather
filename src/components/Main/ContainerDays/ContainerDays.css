@@ -1,19 +1,23 @@
 .days {
   display: flex;
-  margin: 0;
-  padding: 6px 20px 1px;
+  margin: 0 auto;
+  padding: 6px 0 1px;
   box-sizing: border-box;
   gap: 28px;
+  position: relative;
+  width: 100%;
+}
+
+.days__containers_type_relative {
   position: relative;
 }
 
 .days__shadow {
   border-radius: 15px;
   background-color: rgba(0, 0, 0, 0.04);
-  padding: 20px;
   position: absolute;
-  top: -5px;
-  left: 143px;
+  top: -9px;
+  left: -12px;
   height: 154px;
   width: 66px;
   box-sizing: border-box;
