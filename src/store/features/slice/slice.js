@@ -3,6 +3,9 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 const initialState = {
   weather: [],
   forecast: [],
+  hours: new Date().getHours(),
+  chartData: [],
+  hoursWeather: [],
 };
 
 export const slice = createSlice({
@@ -14,13 +17,25 @@ export const slice = createSlice({
     },
     setForecast: (state, action) => {
       state.forecast = action.payload;
+    },
+    setHours: (state, action) => {
+      state.hours = action.payload;
+    },
+    setChartData: (state, action) => {
+      state.chartData = action.payload;
+    },
+    setHoursWeather: (state, action) => {
+      state.hoursWeather = action.payload;
     }
   }
 });
 
 export const {
   setWeather,
-  setForecast
+  setForecast,
+  setHours,
+  setChartData,
+  setHoursWeather,
 } = slice.actions;
 
 export const store = configureStore({

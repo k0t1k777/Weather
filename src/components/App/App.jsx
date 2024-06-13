@@ -5,11 +5,10 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setForecast, setWeather } from '../../store/features/slice/slice';
 
-
 export default function App() {
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-const location = 'Yevpatoriya';
+  const location = 'Yevpatoriya';
   const lang = 'Ru';
   const days = 1;
 

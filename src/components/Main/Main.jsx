@@ -1,16 +1,20 @@
 import './Main.css';
 import Chart from './Chart/Chart';
 import ContainerDays from './ContainerDays/ContainerDays';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import {
+  setChartData,
+  setHoursWeather,
+} from '../../store/features/slice/slice';
 
 export default function Main() {
-  const [hoursWeather, setHoursWeather] = useState([]);
-  const [hours, setHours] = useState(new Date().getHours());
-  const [chartData, setChartData] = useState([]);
-
+  const hoursWeather = useSelector((state) => state.hoursWeather);
+  const hours = useSelector((state) => state.hours);
   const weather = useSelector((state) => state.weather);
   const forecast = useSelector((state) => state.forecast);
+
+  const chartDataInfo = hoursWeather.find((item) => item.time === hours);
 
   useEffect(() => {
     function updateTimeOfDayClass() {
@@ -34,10 +38,8 @@ export default function Main() {
         });
       });
     });
-    setHoursWeather(updatedHoursWeather);
+    dispatchEvent(setHoursWeather(updatedHoursWeather));
   }, []);
-
-  const chartDataInfo = hoursWeather.find((item) => item.time === hours);
 
   useEffect(() => {
     function updateChartData() {
@@ -67,10 +69,9 @@ export default function Main() {
               : currentTemperature,
           },
         ];
-        setChartData(newData);
+        dispatchEvent(setChartData(newData));
       }
     }
-
     updateChartData();
   }, [chartDataInfo, hoursWeather, hours]);
 
@@ -91,12 +92,8 @@ export default function Main() {
       />
       <p className='main__weather'>{weather.current?.condition.text}</p>
       <p className='main__degress'>{weather.current?.temp_c}°</p>
-      <Chart data={chartData} />
-      <ContainerDays
-        hours={hours}
-        setHours={setHours}
-        hoursWeather={hoursWeather}
-      />
+      <Chart />
+      <ContainerDays />
     </div>
   );
 }

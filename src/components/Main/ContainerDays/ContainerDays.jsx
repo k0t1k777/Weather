@@ -1,13 +1,20 @@
+import { useDispatch, useSelector } from 'react-redux';
 import './ContainerDays.css';
 import { useEffect } from 'react';
+import { setHours } from '../../../store/features/slice/slice';
 
-export default function ContainerDays({ hours, setHours, hoursWeather }) {
+export default function ContainerDays() {
+  const hours = useSelector((state) => state.hours);
+  const hoursWeather = useSelector((state) => state.hoursWeather);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setHours(new Date().getHours());
+      dispatch(setHours(new Date().getHours()));
     }, 1000 * 60 * 60);
     return () => clearInterval(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
