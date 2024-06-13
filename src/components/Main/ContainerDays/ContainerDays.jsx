@@ -2,6 +2,7 @@ import './ContainerDays.css';
 import { useEffect } from 'react';
 
 export default function ContainerDays({ hours, setHours, hoursWeather }) {
+
   useEffect(() => {
     const timer = setInterval(() => {
       setHours(new Date().getHours());

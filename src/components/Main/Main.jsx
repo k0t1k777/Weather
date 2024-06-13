@@ -2,21 +2,24 @@ import './Main.css';
 import Chart from './Chart/Chart';
 import ContainerDays from './ContainerDays/ContainerDays';
 import { useCallback, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-export default function Main({ weather, forecast }) {
+export default function Main() {
   const [hoursWeather, setHoursWeather] = useState([]);
   const [hours, setHours] = useState(new Date().getHours());
   const [chartData, setChartData] = useState([]);
 
+  const weather = useSelector((state) => state.weather);
+  const forecast = useSelector((state) => state.forecast);
+
   useEffect(() => {
-    const updateTimeOfDayClass = () => {
+    function updateTimeOfDayClass() {
       if (hours >= 22 || hours < 6) {
-        document.documentElement.className = "root night";
+        document.documentElement.className = 'root night';
       } else if (hours >= 6 && hours < 12) {
-        document.documentElement.className = "root morning";
+        document.documentElement.className = 'root morning';
       }
-    };
-  
+    }
     updateTimeOfDayClass();
   }, [hours]);
 
@@ -92,7 +95,6 @@ export default function Main({ weather, forecast }) {
       <ContainerDays
         hours={hours}
         setHours={setHours}
-        forecast={forecast}
         hoursWeather={hoursWeather}
       />
     </div>
