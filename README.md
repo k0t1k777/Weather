@@ -45,7 +45,7 @@
 
 ## Ключевые точки для медиа min,max-width: 320px
 
-![alt text](./src/assets/screenshots/Снимок1.JPG)
+![alt text](./src/assets/Снимок1.JPG)
 <!--  ![alt text](./src/assets/screenshots/Снимок2.JPG)
 ![alt text](./src/assets/screenshots/Снимок3.JPG)
 ![alt text](./src/assets/screenshots/Снимок4.JPG)

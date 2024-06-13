@@ -2,17 +2,18 @@ import './Main.css';
 import Chart from './Chart/Chart';
 import ContainerDays from './ContainerDays/ContainerDays';
 import { useCallback, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   setChartData,
   setHoursWeather,
 } from '../../store/features/slice/slice';
+import CityTemp from './CityTemp/CityTemp';
 
 export default function Main() {
   const hoursWeather = useSelector((state) => state.hoursWeather);
   const hours = useSelector((state) => state.hours);
-  const weather = useSelector((state) => state.weather);
   const forecast = useSelector((state) => state.forecast);
+  const dispatch = useDispatch();
 
   const chartDataInfo = hoursWeather.find((item) => item.time === hours);
 
@@ -38,7 +39,7 @@ export default function Main() {
         });
       });
     });
-    dispatchEvent(setHoursWeather(updatedHoursWeather));
+    dispatch(setHoursWeather(updatedHoursWeather));
   }, []);
 
   useEffect(() => {
@@ -69,11 +70,11 @@ export default function Main() {
               : currentTemperature,
           },
         ];
-        dispatchEvent(setChartData(newData));
+        dispatch(setChartData(newData));
       }
     }
     updateChartData();
-  }, [chartDataInfo, hoursWeather, hours]);
+  }, [chartDataInfo, hoursWeather, hours, dispatch]);
 
   useEffect(() => {
     saveHoursWeatherData(forecast.forecastday);
@@ -81,17 +82,7 @@ export default function Main() {
 
   return (
     <div className='main'>
-      <div className='main__container-city'>
-        <p className='main__city'>{weather.location?.name}</p>
-        <p className='main__time'>{weather.location?.localtime}</p>
-      </div>
-      <img
-        className='main__image'
-        src={weather.current?.condition.icon}
-        alt='Иконка картинки'
-      />
-      <p className='main__weather'>{weather.current?.condition.text}</p>
-      <p className='main__degress'>{weather.current?.temp_c}°</p>
+      <CityTemp />
       <Chart />
       <ContainerDays />
     </div>
