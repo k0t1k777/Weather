@@ -5,9 +5,22 @@ import { useCallback, useEffect, useState } from 'react';
 
 export default function Main({ weather, forecast }) {
   const [hoursWeather, setHoursWeather] = useState([]);
-  console.log('hoursWeather: ', hoursWeather);
   const [hours, setHours] = useState(new Date().getHours());
   const [chartData, setChartData] = useState([]);
+
+  useEffect(() => {
+    const updateTimeOfDayClass = () => {
+      if (hours >= 22 || hours < 6) {
+        document.documentElement.className = "root night";
+      } else if (hours >= 6 && hours < 12) {
+        document.documentElement.className = "root morning";
+      } else if (hours >= 13 && hours < 21) {
+        document.documentElement.className = "root afternoon";
+      }
+    };
+  
+    updateTimeOfDayClass();
+  }, [hours]);
 
   const saveHoursWeatherData = useCallback((forecast) => {
     const updatedHoursWeather = [];
@@ -26,7 +39,7 @@ export default function Main({ weather, forecast }) {
   const chartDataInfo = hoursWeather.find((item) => item.time === hours);
 
   useEffect(() => {
-    const updateChartData = () => {
+    function updateChartData() {
       if (chartDataInfo) {
         const currentTemperature = chartDataInfo.temperature;
         const nextHour = hoursWeather.find((item) => item.time === hours + 1);
@@ -39,16 +52,23 @@ export default function Main({ weather, forecast }) {
         );
 
         const newData = [
-          { temperature: prevTwoHours ? prevTwoHours.temperature : currentTemperature },
+          {
+            temperature: prevTwoHours
+              ? prevTwoHours.temperature
+              : currentTemperature,
+          },
           { temperature: prevHour ? prevHour.temperature : currentTemperature },
           { temperature: currentTemperature },
           { temperature: nextHour ? nextHour.temperature : currentTemperature },
-          { temperature: nextTwoHours ? nextTwoHours.temperature : currentTemperature },
+          {
+            temperature: nextTwoHours
+              ? nextTwoHours.temperature
+              : currentTemperature,
+          },
         ];
-
         setChartData(newData);
       }
-    };
+    }
 
     updateChartData();
   }, [chartDataInfo, hoursWeather, hours]);
@@ -65,7 +85,6 @@ export default function Main({ weather, forecast }) {
       </div>
       <img
         className='main__image'
-        // src={current}
         src={weather.current?.condition.icon}
         alt='Иконка картинки'
       />
