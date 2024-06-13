@@ -14,8 +14,6 @@ export default function Main({ weather, forecast }) {
         document.documentElement.className = "root night";
       } else if (hours >= 6 && hours < 12) {
         document.documentElement.className = "root morning";
-      } else if (hours >= 13 && hours < 21) {
-        document.documentElement.className = "root afternoon";
       }
     };
   

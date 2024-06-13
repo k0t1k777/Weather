@@ -16,3 +16,11 @@
 body {
   margin: 0;
 }
+
+.night {
+  background: linear-gradient(to bottom, #FFFFFF 0%, #0FA2AB 100%);
+}
+
+.morning {
+  background: linear-gradient(to bottom, #BCE8FF 0%, #0FA2AB 100%);
+}
