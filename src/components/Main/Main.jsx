@@ -28,19 +28,23 @@ export default function Main() {
     updateTimeOfDayClass();
   }, [hours]);
 
-  const saveHoursWeatherData = useCallback((forecast) => {
-    const updatedHoursWeather = [];
-    forecast?.forEach((item) => {
-      item.hour.forEach((hourlyForecast) => {
-        updatedHoursWeather.push({
-          time: new Date(hourlyForecast.time).getHours(),
-          temperature: hourlyForecast.temp_c,
-          image: hourlyForecast.condition.icon,
+  const saveHoursWeatherData = useCallback(
+    (forecast) => {
+      const updatedHoursWeather = [];
+      forecast?.forEach((item) => {
+        item.hour.forEach((hourlyForecast) => {
+          updatedHoursWeather.push({
+            time: new Date(hourlyForecast.time).getHours(),
+            temperature: hourlyForecast.temp_c,
+            image: hourlyForecast.condition.icon,
+          });
         });
       });
-    });
-    dispatch(setHoursWeather(updatedHoursWeather));
-  }, []);
+      dispatch(setHoursWeather(updatedHoursWeather));
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [forecast]
+  );
 
   useEffect(() => {
     function updateChartData() {
