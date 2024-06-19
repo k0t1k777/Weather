@@ -15,5 +15,3 @@ export const apiWeather = createApi({
 export const {
   useGetForecastQuery,
 } = apiWeather;
-
-// query: () => `/forecast.json?key=${API_KEY}&q=$Moscow&days=$1&lang=$RU`,
