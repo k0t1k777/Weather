@@ -12,15 +12,10 @@ import CityTemp from './CityTemp/CityTemp';
 export default function Main() {
   const hoursWeather = useSelector((state) => state.weather.hoursWeather);
   const hours = useSelector((state) => state.weather.hours);
-  console.log('hours: ', hours);
   const forecast = useSelector((state) => state.weather.forecast);
   const dispatch = useDispatch();
 
   const chartDataInfo = hoursWeather?.find((item) => item.time === hours);
-
-  useEffect(() => {
-    console.log('forecast: ', forecast.forecastday && forecast.forecastday[0].hour );
-  }, [forecast])
 
   useEffect(() => {
     function updateTimeOfDayClass() {
@@ -36,7 +31,7 @@ export default function Main() {
   const saveHoursWeatherData = useCallback(
     (forecast) => {
       const updatedHoursWeather = [];
-      forecast?.forecastday?.forEach((item) => {
+      forecast?.forEach((item) => {
         item.hour.forEach((hourlyForecast) => {
           updatedHoursWeather.push({
             time: new Date(hourlyForecast.time).getHours(),
