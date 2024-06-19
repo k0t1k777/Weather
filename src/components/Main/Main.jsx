@@ -6,16 +6,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   setChartData,
   setHoursWeather,
-} from '../../store/features/slice/slice';
+} from '../../store/features/slice/weatherSlice';
 import CityTemp from './CityTemp/CityTemp';
 
 export default function Main() {
-  const hoursWeather = useSelector((state) => state.hoursWeather);
-  const hours = useSelector((state) => state.hours);
-  const forecast = useSelector((state) => state.forecast);
+  const hoursWeather = useSelector((state) => state.weather.hoursWeather);
+  const hours = useSelector((state) => state.weather.hours);
+  console.log('hours: ', hours);
+  const forecast = useSelector((state) => state.weather.forecast);
   const dispatch = useDispatch();
 
-  const chartDataInfo = hoursWeather.find((item) => item.time === hours);
+  const chartDataInfo = hoursWeather?.find((item) => item.time === hours);
+
+  useEffect(() => {
+    console.log('forecast: ', forecast.forecastday && forecast.forecastday[0].hour );
+  }, [forecast])
 
   useEffect(() => {
     function updateTimeOfDayClass() {
@@ -31,7 +36,7 @@ export default function Main() {
   const saveHoursWeatherData = useCallback(
     (forecast) => {
       const updatedHoursWeather = [];
-      forecast?.forEach((item) => {
+      forecast?.forecastday?.forEach((item) => {
         item.hour.forEach((hourlyForecast) => {
           updatedHoursWeather.push({
             time: new Date(hourlyForecast.time).getHours(),
@@ -81,7 +86,7 @@ export default function Main() {
   }, [chartDataInfo, hoursWeather, hours, dispatch]);
 
   useEffect(() => {
-    saveHoursWeatherData(forecast.forecastday);
+    saveHoursWeatherData(forecast?.forecastday);
   }, [forecast, saveHoursWeatherData]);
 
   return (

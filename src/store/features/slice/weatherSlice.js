@@ -1,4 +1,6 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { 
+  // configureStore, 
+  createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   weather: [],
@@ -8,8 +10,8 @@ const initialState = {
   hoursWeather: [],
 };
 
-export const slice = createSlice({
-  name: 'counter',
+export const weatherSlice = createSlice({
+  name: 'weather',
   initialState,
   reducers: {
     setWeather: (state, action) => {
@@ -18,13 +20,13 @@ export const slice = createSlice({
     setForecast: (state, action) => {
       state.forecast = action.payload;
     },
-    setHours: (state, action) => {
+    setHours(state, action) {
       state.hours = action.payload;
     },
-    setChartData: (state, action) => {
+    setChartData(state, action) {
       state.chartData = action.payload;
     },
-    setHoursWeather: (state, action) => {
+    setHoursWeather(state, action) {
       state.hoursWeather = action.payload;
     }
   }
@@ -36,8 +38,15 @@ export const {
   setHours,
   setChartData,
   setHoursWeather,
-} = slice.actions;
+} = weatherSlice.actions;
 
-export const store = configureStore({
-  reducer: slice.reducer
-});
+
+export default weatherSlice.reducer;
+
+// export const store = configureStore({
+//   reducer: weatherSlice.reducer
+// });
+
+// export const store = configureStore({
+//   reducer: slice.reducer
+// });

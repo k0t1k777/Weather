@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { LineChart, Line } from 'recharts';
 
 export default function Chart() {
-  const chartData = useSelector((state) => state.chartData);
+  const chartData = useSelector((state) => state.weather.chartData);
 
   return (
     <LineChart width={296} height={70} data={chartData} className='chart'>
