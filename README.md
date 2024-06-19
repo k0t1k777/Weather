@@ -8,6 +8,7 @@
 
 - ⚛️ [React](https://ru.reactjs.org/)
 - 🔧 [Redux](https://ru.reduxjs.org/)
+- [RTK Query](https://ru.reduxjs.org/)
 
 ## Библиотеки,которые использовались
 
