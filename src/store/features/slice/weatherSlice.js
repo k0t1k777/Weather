@@ -1,6 +1,4 @@
-import { 
-  // configureStore, 
-  createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   weather: [],
@@ -28,8 +26,8 @@ export const weatherSlice = createSlice({
     },
     setHoursWeather(state, action) {
       state.hoursWeather = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const {
@@ -40,13 +38,4 @@ export const {
   setHoursWeather,
 } = weatherSlice.actions;
 
-
 export default weatherSlice.reducer;
-
-// export const store = configureStore({
-//   reducer: weatherSlice.reducer
-// });
-
-// export const store = configureStore({
-//   reducer: slice.reducer
-// });
