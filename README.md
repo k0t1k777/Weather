@@ -44,7 +44,7 @@
 9. Запуск проект: `npm run dev`
 10. В браузере открываем `http://localhost:5173/`
 
-## Ключевые точки для медиа min,max-width: 320px
+## Ключевые точки для медиа min: 320px,max-width: 
 
 ![alt text](./src/assets/Снимок1.JPG)
 ![alt text](./src/assets/Снимок2.JPG)

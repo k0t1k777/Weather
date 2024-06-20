@@ -43,7 +43,9 @@ export default function ContainerDays() {
       </div>
       <div className='days__containers days__containers_type_relative'>
         <div className='days__shadow'></div>
-        <p className='days__item'>{hours - 1 < 13 ? `${hours - 1}AM` : `${hours - 1}PM`}</p>
+        <p className='days__item'>
+          {hours - 1 < 13 ? `${hours - 1}AM` : `${hours - 1}PM`}
+        </p>
         <img
           src={hoursWeather?.find((item) => item.time === hours - 1)?.image}
           alt='иконка картинки'
