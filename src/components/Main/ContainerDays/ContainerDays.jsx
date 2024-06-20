@@ -20,7 +20,9 @@ export default function ContainerDays() {
   return (
     <div className='days'>
       <div className='days__containers'>
-        <p className='days__item'>{hours - 3 <= 13 ? `${hours - 3}AM` : `${hours - 3}PM`}</p>
+        <p className='days__item'>
+          {hours - 3 <= 13 ? `${hours - 3}AM` : `${hours - 3}PM`}
+        </p>
         <img
           src={hoursWeather?.find((item) => item.time === hours - 3)?.image}
           alt='иконка картинки'
@@ -29,7 +31,9 @@ export default function ContainerDays() {
         {hoursWeather?.find((item) => item.time === hours - 3)?.temperature}°
       </div>
       <div className='days__containers'>
-        <p className='days__item'>{hours - 2 < 13 ? `${hours - 2}AM` : `${hours - 2}PM`}</p>
+        <p className='days__item'>
+          {hours - 2 < 13 ? `${hours - 2}AM` : `${hours - 2}PM`}
+        </p>
         <img
           src={hoursWeather?.find((item) => item.time === hours - 2)?.image}
           alt='иконка картинки'
